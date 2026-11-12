@@ -1,0 +1,10 @@
+FROM fedora:latest
+
+RUN dnf -y update
+RUN dnf -y install httpd
+
+COPY data /var/www/html/data
+
+EXPOSE 80
+
+ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
